@@ -6,7 +6,7 @@ import { openPlanner, refreshPlanners } from "./planner.mjs";
 import { partyKit } from "./kit.mjs";
 
 /* ======================================================================== *
- * Rutz's PF2e Traps.
+ * Rutz's Traps (PF2e · D&D 5e · any system).
  * Token controls (left toolbar):
  *   players  함정 설치 (the planner) · 함정 표시 (show/hide your markers)
  *   GM       함정 (GM's planner: the players' trap-setting time, GM traps) · 몰래 보기
@@ -57,7 +57,7 @@ Hooks.once("init", registerSettings);
 Hooks.on("getSceneControlButtons", addTools);
 
 Hooks.once("ready", () => {
-  if (game.system.id !== "pf2e" && game.system.id !== "sf2e") return;
+  // Any system: PF2e and D&D 5e have their DC rules and trap items (systems.mjs), others use the generic ones.
   game.socket.on(SOCKET, msg => { if (msg?.type === "op" && isKeeper()) handle(msg.data); });
   Hooks.on("canvasReady", () => {
     snapshot();

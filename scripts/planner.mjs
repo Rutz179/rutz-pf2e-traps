@@ -1,4 +1,5 @@
 import { MID, esc, levelDC, partyMembers, setting, t } from "./util.mjs";
+import { itemLevel, levelOf } from "./systems.mjs";
 import { giveBack, phaseOf, request, takeOne, trapsOf } from "./store.mjs";
 import { itemDC, kindOf, partyKit, trapDC } from "./kit.mjs";
 import { pickSquare } from "./place.mjs";
@@ -196,12 +197,12 @@ export class TrapPlanner extends foundry.applications.api.ApplicationV2 {
     if (!cell) return;
     if (trapsOf().some(x => x.side === "pc" && x.armed && x.i === cell.i && x.j === cell.j)) return ui.notifications.warn(t("Place.Taken"));
     const actor = item.actor;
-    const { dc, base } = trapDC(item, actor?.level ?? 1);
+    const { dc, base } = trapDC(item, levelOf(actor));
     const copy = item.toObject();
     delete copy._id;
     copy.system.quantity = 1;
     const trap = {
-      id: uid(), side: "pc", i: cell.i, j: cell.j, name: item.name, img: item.img, uuid: item.uuid, level: Number(item.system?.level?.value ?? 0),
+      id: uid(), side: "pc", i: cell.i, j: cell.j, name: item.name, img: item.img, uuid: item.uuid, level: itemLevel(item),
       dc, dcBase: base, kind: kindOf(item), desc: item.system?.description?.value ?? "", item: copy, owner: actor?.id ?? null,
       armed: true, sprung: null, at: game.time?.worldTime ?? 0
     };
@@ -242,7 +243,7 @@ export class TrapPlanner extends foundry.applications.api.ApplicationV2 {
 
 function partyLevel() {
   const pcs = partyMembers();
-  return pcs.length ? pcs.reduce((n, a) => n + (a.level ?? 1), 0) / pcs.length : 1;
+  return pcs.length ? pcs.reduce((n, a) => n + levelOf(a), 0) / pcs.length : 1;
 }
 
 export function openPlanner(mode = game.user.isGM ? "gm" : "pc") {

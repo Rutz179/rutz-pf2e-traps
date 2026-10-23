@@ -24,9 +24,9 @@ export function snapshot(scene = canvas?.scene) {
   for (const tk of scene?.tokens ?? []) where.set(tk.id, { x: tk.x, y: tk.y });
 }
 
-function hits(trap, actor) {
+function hits(trap, actor, token = null) {
   if (!trap.armed) return false;
-  const ours = isPlayerSide(actor);
+  const ours = isPlayerSide(actor, token);
   if (trap.side === "pc") return setting("pcHits", "enemies") === "all" || !ours;
   return setting("gmHits", "pcs") === "all" || ours;
 }
@@ -36,7 +36,7 @@ const handled = new Map(); // token id → time the move hook took care of it
 /** Look along a path of top-left points; spring the first trap on it. */
 async function checkPath(doc, pts) {
   if (!isKeeper() || !canvas?.grid || canvas.grid.type === 0 || doc.parent?.id !== canvas.scene?.id) return;
-  const traps = trapsOf(doc.parent).filter(tp => hits(tp, doc.actor));
+  const traps = trapsOf(doc.parent).filter(tp => hits(tp, doc.actor, doc));
   if (!traps.length) return;
   pts = pts.filter(p => Number.isFinite(p?.x) && Number.isFinite(p?.y)).map(p => ({ x: p.x, y: p.y }))
     .filter((p, n, a) => n === 0 || p.x !== a[n - 1].x || p.y !== a[n - 1].y);

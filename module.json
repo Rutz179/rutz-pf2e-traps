@@ -1,19 +1,37 @@
 {
   "id": "rutz-pf2e-traps",
-  "title": "Rutz's PF2e Traps",
-  "description": "함정 설치 — 플레이어들이 GM 몰래 덫·함정·독을 깔고(GM 화면엔 안 보임), 적이 밟으면 GM에게 아이템처럼 세부 내용이 뜹니다. GM도 함정을 깔 수 있고, 필요할 때 PC 함정 위치를 몰래 볼 수 있습니다. 레벨에 맞춘 함정 DC. Hidden player traps and GM traps for PF2e.",
-  "version": "0.1.2",
-  "compatibility": { "minimum": "13", "verified": "14" },
-  "authors": [{ "name": "Rutz (rutz179)" }],
-  "relationships": { "systems": [{ "id": "pf2e", "type": "system" }] },
-  "esmodules": ["scripts/main.mjs"],
-  "styles": ["styles/traps.css"],
+  "title": "Rutz's Traps",
+  "description": "Players secretly set traps, snares and poisons the GM can't see; when a creature steps on one, the GM gets the details like a used item. The GM can set traps too and peek at the players' traps. Trap DCs scale with level. PF2e and D&D 5e rules built in; works in other systems with generic DCs. — 플레이어가 GM 몰래 함정·덫·독을 깔고, 밟으면 GM에게 세부 내용이 뜹니다. PF2e·D&D 5e 지원.",
+  "version": "0.2.0",
+  "compatibility": {
+    "minimum": "13",
+    "verified": "14"
+  },
+  "authors": [
+    {
+      "name": "Rutz (rutz179)"
+    }
+  ],
+  "esmodules": [
+    "scripts/main.mjs"
+  ],
+  "styles": [
+    "styles/traps.css"
+  ],
   "languages": [
-    { "lang": "ko", "name": "한국어", "path": "lang/ko.json" },
-    { "lang": "en", "name": "English", "path": "lang/en.json" }
+    {
+      "lang": "ko",
+      "name": "한국어",
+      "path": "lang/ko.json"
+    },
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    }
   ],
   "socket": true,
   "url": "https://github.com/Rutz179/rutz-pf2e-traps",
   "manifest": "https://github.com/Rutz179/rutz-pf2e-traps/releases/latest/download/module.json",
-  "download": "https://github.com/Rutz179/rutz-pf2e-traps/releases/download/v0.1.1/module.zip"
+  "download": "https://github.com/Rutz179/rutz-pf2e-traps/releases/download/v0.2.0/module.zip"
 }
