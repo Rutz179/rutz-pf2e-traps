@@ -112,17 +112,18 @@
       "Phase": "Only during trap-setting time",
       "PhaseHint": "On (default): players can set traps only while the GM has trap-setting open.",
       "PcHits": "Who sets off player traps",
-      "PcHitsHint": "Who springs a trap set by the players.",
+      "PcHitsHint": "Who springs a trap set by the players. The players' side: characters a player owns, members of the party, PF2e's “party” alliance, friendly tokens.",
       "Enemies": "Anyone not on the players' side",
       "All": "Anyone",
       "GmHits": "Who sets off GM traps",
-      "GmHitsHint": "Who springs a trap set by the GM.",
+      "GmHitsHint": "Who springs a trap set by the GM. The players' side: characters a player owns, members of the party, PF2e's “party” alliance, friendly tokens.",
       "Pcs": "The players' side",
       "PeekSeconds": "Peek time (seconds)",
       "PeekNotice": "Announce peeks in chat",
       "PeekNoticeHint": "On: a chat message is posted whenever the GM peeks at the players' traps.",
       "Markers": "Trap markers",
       "MarkersHint": "(Players) Show your party's traps on the map."
-    }
+    },
+    "Passed": "{name} walked over your trap “{trap}” — it didn't go off: GM traps catch {who} (setting “Who sets off GM traps”)."
   }
 }

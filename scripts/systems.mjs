@@ -98,11 +98,27 @@ export function partyMembers() {
   return game.actors.filter(a => a.type === "character" && a.hasPlayerOwner);
 }
 
-/** Does this token stand with the players? (PF2e alliance, else ownership or a friendly token.) */
+/** Ids of the characters in the party actor (PF2e) or group (5e), with or without a player. */
+function partyIds() {
+  const party = game.actors?.party ?? game.actors?.find?.(a => a.type === "party" || a.type === "group");
+  const raw = party?.members ?? party?.system?.members ?? [];
+  return new Set([...raw].map(m => (m?.actor ?? m)?.id).filter(Boolean));
+}
+
+/**
+ * Does this token stand with the players? Any of: a player owns it; it is in the party
+ * (PF2e's party actor, 5e's group — so the GM's own test party counts too, before any
+ * player is assigned); PF2e's "party" alliance; a friendly token. PF2e's "opposition"
+ * alliance (which PF2e also gives a character nobody owns) is not, unless it is in the party.
+ */
 export function isPlayerSide(actor, token = null) {
   if (!actor) return false;
   if (actor.hasPlayerOwner) return true;
-  if (isPF2e()) return actor.alliance === "party";
+  if (partyIds().has(actor.id)) return true;
+  if (isPF2e()) {
+    if (actor.alliance === "party") return true;
+    if (actor.alliance === "opposition") return false;
+  }
   const friendly = globalThis.CONST?.TOKEN_DISPOSITIONS?.FRIENDLY ?? 1;
   return (token?.disposition ?? actor.prototypeToken?.disposition) === friendly;
 }

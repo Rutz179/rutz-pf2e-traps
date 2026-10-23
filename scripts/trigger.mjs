@@ -5,7 +5,8 @@ import { withDC } from "./kit.mjs";
 
 /* ======================================================================== *
  * Stepping on a trap. Only the active GM's client watches (it can move any
- * token and nobody sees it read the players' traps):
+ * token and nobody sees it read the players' traps) — on every scene, not only
+ * the one the GM is looking at:
  *   a token moves → the cells it crossed (start → each waypoint → end)
  *   → the first armed trap of the other side on that path
  *   → the token stops on the trap's square, the trap is sprung (not armed),
@@ -34,15 +35,34 @@ function hits(trap, actor, token = null) {
 const handled = new Map(); // token id → time the move hook took care of it
 
 /** Look along a path of top-left points; spring the first trap on it. */
+/** The scene's own grid (v12+), so a move counts even while the GM is looking at another scene. */
+function gridOf(scene) {
+  if (typeof scene?.grid?.getOffset === "function") return scene.grid;
+  return scene?.id === canvas?.scene?.id ? canvas?.grid ?? null : null;
+}
+
 async function checkPath(doc, pts) {
-  if (!isKeeper() || !canvas?.grid || canvas.grid.type === 0 || doc.parent?.id !== canvas.scene?.id) return;
-  const traps = trapsOf(doc.parent).filter(tp => hits(tp, doc.actor, doc));
-  if (!traps.length) return;
+  const grid = gridOf(doc.parent);
+  if (!isKeeper() || !grid || grid.type === 0) return;
+  const all = trapsOf(doc.parent).filter(tp => tp.armed);
+  if (!all.length) return;
   pts = pts.filter(p => Number.isFinite(p?.x) && Number.isFinite(p?.y)).map(p => ({ x: p.x, y: p.y }))
     .filter((p, n, a) => n === 0 || p.x !== a[n - 1].x || p.y !== a[n - 1].y);
-  const trap = firstTrapOnPath(pts, doc.width ?? 1, doc.height ?? 1, canvas.grid, traps);
-  if (trap) await spring(doc, trap);
+  const traps = all.filter(tp => hits(tp, doc.actor, doc));
+  const trap = traps.length ? firstTrapOnPath(pts, doc.width ?? 1, doc.height ?? 1, grid, traps) : null;
+  if (trap) return spring(doc, trap, grid);
+  // The GM's own trap let this one pass (who sets it off is a setting): say so, to the GM only.
+  // (Players' traps stay silent — the GM isn't meant to know where they are.)
+  const passed = firstTrapOnPath(pts, doc.width ?? 1, doc.height ?? 1, grid, all.filter(tp => tp.side === "gm"));
+  if (passed) {
+    const key = `${passed.id}:${doc.id}`;
+    if (Date.now() - (told.get(key) ?? 0) > 60000) {
+      told.set(key, Date.now());
+      ui.notifications.info(t("Passed", { name: doc.name, trap: passed.name, who: t(setting("gmHits", "pcs") === "all" ? "Settings.All" : "Settings.Pcs") }));
+    }
+  }
 }
+const told = new Map(); // "trap:token" → when the GM was told it walked past
 
 /**
  * v13's move hook: where the token started, every square it went through and where it ends.
@@ -71,8 +91,8 @@ export async function onTokenMoved(doc, changes, options) {
   await checkPath(doc, [before, to]);
 }
 
-async function spring(doc, trap) {
-  const tl = canvas.grid.getTopLeftPoint({ i: trap.i, j: trap.j });
+async function spring(doc, trap, grid = gridOf(doc.parent)) {
+  const tl = grid.getTopLeftPoint({ i: trap.i, j: trap.j });
   where.set(doc.id, { x: tl.x, y: tl.y });
   // v13: stop what is left of the move before setting the token on the trap.
   try { await doc.stopMovement?.(); } catch (_) { /* older Foundry */ }
