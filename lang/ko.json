@@ -1,0 +1,128 @@
+{
+  "RPT": {
+    "Title": "함정",
+    "NoGM": "GM이 접속해 있어야 함정을 깔 수 있습니다.",
+    "Level": "{n}레벨",
+    "Cell": "{col}열 {row}행",
+    "Look": "지도에서 보기",
+    "Remove": "치우기",
+    "DcTip": "아이템 DC {base} · 레벨 DC {level} — 설정에 따라 높은 쪽",
+    "Side": {
+      "pc": "PC 함정",
+      "gm": "GM 함정"
+    },
+    "Kind": {
+      "snare": "덫",
+      "trap": "함정",
+      "poison": "독",
+      "custom": "함정",
+      "hazard": "위험"
+    },
+    "St": {
+      "Armed": "작동 대기",
+      "Sprung": "발동됨 — {name}"
+    },
+    "Tool": {
+      "Pc": "함정 설치",
+      "Gm": "함정 (GM)",
+      "Peek": "PC 함정 몰래 보기",
+      "Markers": "내 함정 표시 켜기/끄기",
+      "Hidden": "함정 표시를 껐습니다.",
+      "Shown": "함정 표시를 켰습니다."
+    },
+    "Pc": {
+      "Title": "함정 설치",
+      "Open": "함정 설치 시간 — 지금 깔 수 있어요",
+      "Closed": "GM이 함정 설치 시간을 열면 깔 수 있습니다",
+      "Secret": "여기 깐 함정은 GM 화면에 보이지 않습니다",
+      "Kit": "파티 가방 속 함정",
+      "NoKit": "덫·함정·독·마름쇠가 없습니다.",
+      "KitHint": "DC는 아이템 DC와 '설치한 캐릭터 레벨 DC + {bonus}' 중 높은 쪽(설정). 몬스터는 보통 파티보다 강하니까요.",
+      "Place": "설치",
+      "Placed": "깔아 둔 함정 ({n})",
+      "NonePlaced": "아직 없습니다. 왼쪽에서 '설치' → 지도 칸 클릭.",
+      "Pickup": "회수",
+      "PickupHint": "함정을 거둬 가방에 돌려놓습니다",
+      "Done": "다 깔았어요",
+      "DoneLine": "{name}: 플레이어들이 함정을 {n}개 깔아 두었습니다. (위치는 비밀)"
+    },
+    "Gm": {
+      "Title": "함정 — GM",
+      "PhaseOpen": "PC 함정 설치 시간: 열림 (플레이어들이 몰래 까는 중)",
+      "PhaseClosed": "PC 함정 설치 시간: 닫힘",
+      "Open": "설치 시간 열기",
+      "Close": "설치 시간 닫기",
+      "PcCount": "PC 함정 {n}개 대기 · {sprung}개 발동됨",
+      "Peek": "몰래 보기",
+      "PeekHint": "PC 함정 위치를 {s}초 동안 내 화면에만 보여 줍니다.",
+      "PeekLine": "GM이 함정 위치를 확인했습니다.",
+      "ClearPcHint": "PC 함정을 모두 치웁니다(보지 않고)",
+      "ClearTitle": "함정 치우기",
+      "ClearPcAsk": "이 장면의 PC 함정을 모두 치울까요? (가방으로 돌아가지 않습니다)",
+      "ClearGmAsk": "이 장면의 GM 함정을 모두 치울까요?",
+      "Make": "GM 함정 만들기",
+      "Drop": "아이템(덫·독)이나 위험(Hazard)을 여기 끌어 놓거나, 이름과 DC만 적어도 됩니다.",
+      "Name": "이름",
+      "NameHint": "예: 바닥 가시",
+      "Level": "레벨",
+      "Desc": "설명 (발동하면 뜸 · @Check[reflex|dc:20] 같은 버튼도 됨)",
+      "DescHint": "예: 바닥이 꺼지며 가시가 솟는다. @Check[reflex|dc:20|basic] 실패 시 2d8 관통.",
+      "Place": "칸 골라 설치",
+      "NeedName": "이름을 적어 주세요.",
+      "List": "GM 함정 ({n})",
+      "None": "없습니다.",
+      "ClearGm": "GM 함정 모두 치우기"
+    },
+    "Place": {
+      "Hint": "설치할 칸을 클릭하세요 (오른쪽 클릭·Esc: 취소)",
+      "NoGrid": "격자가 있는 장면에서만 함정을 깔 수 있습니다.",
+      "Taken": "그 칸에는 이미 함정이 있습니다.",
+      "Done": "{name} — {cell}에 설치했습니다."
+    },
+    "Phase": {
+      "Open": "GM이 함정 설치 시간을 열었습니다 — 함정 설치 창에서 몰래 깔아 보세요.",
+      "Closed": "함정 설치 시간이 끝났습니다.",
+      "GmOpen": "PC 함정 설치 시간을 열었습니다. 플레이어 함정은 GM 화면에 보이지 않습니다.",
+      "GmClosed": "PC 함정 설치 시간을 닫았습니다."
+    },
+    "Pop": {
+      "Title": "함정 발동 — {name}",
+      "Base": "원래 {n}",
+      "Stepped": "{name}이(가) 밟았습니다",
+      "SetBy": "설치: {name}",
+      "NoDesc": "설명 없음",
+      "Public": "채팅에 공개",
+      "GmOnly": "GM에게만",
+      "Select": "밟은 토큰 선택",
+      "Rearm": "다시 무장",
+      "RearmHint": "없던 일로 — 함정을 다시 작동 대기로",
+      "Clear": "치우기"
+    },
+    "Card": {
+      "Sprung": "딸깍! {name}이(가) 함정을 밟았습니다"
+    },
+    "Settings": {
+      "DcMode": "함정 DC",
+      "DcModeHint": "덫·독은 아이템 레벨의 DC라 레벨 높은 적에게 너무 약합니다. 레벨 DC를 쓰면 설치한 캐릭터 레벨에 맞춥니다.",
+      "DcBest": "아이템 DC와 레벨 DC 중 높은 쪽",
+      "DcLevel": "늘 레벨 DC",
+      "DcItem": "아이템 DC 그대로",
+      "DcBonus": "레벨 DC 보정",
+      "DcBonusHint": "레벨 DC에 더하는 값(기본 +2 — 몬스터는 보통 파티보다 강하니까).",
+      "Phase": "설치는 GM이 연 시간에만",
+      "PhaseHint": "켜면(기본) GM이 '설치 시간 열기'를 한 동안에만 플레이어가 함정을 깔 수 있습니다.",
+      "PcHits": "PC 함정에 걸리는 것",
+      "PcHitsHint": "플레이어가 깐 함정을 누가 밟으면 발동하는지.",
+      "Enemies": "플레이어 편이 아닌 것",
+      "All": "누구든",
+      "GmHits": "GM 함정에 걸리는 것",
+      "GmHitsHint": "GM이 깐 함정을 누가 밟으면 발동하는지.",
+      "Pcs": "플레이어 편",
+      "PeekSeconds": "몰래 보기 시간(초)",
+      "PeekNotice": "몰래 보기를 채팅에 알림",
+      "PeekNoticeHint": "켜면 GM이 PC 함정 위치를 볼 때 채팅에 한 줄 남깁니다.",
+      "Markers": "함정 표시",
+      "MarkersHint": "(플레이어) 내 파티가 깐 함정을 지도에 표시합니다."
+    }
+  }
+}
