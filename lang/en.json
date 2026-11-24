@@ -1,0 +1,172 @@
+{
+  "RPT": {
+    "Title": "Traps",
+    "NoGM": "A GM must be online to set traps.",
+    "Level": "level {n}",
+    "Cell": "col {col}, row {row}",
+    "Look": "Show on the map",
+    "Remove": "Remove",
+    "DcTip": "Item DC {base} · level DC {level} (per the DC setting)",
+    "Side": {
+      "pc": "Player trap",
+      "gm": "GM trap"
+    },
+    "Kind": {
+      "snare": "Snare",
+      "trap": "Trap",
+      "poison": "Poison",
+      "custom": "Trap",
+      "hazard": "Hazard"
+    },
+    "St": {
+      "Armed": "armed",
+      "Sprung": "sprung — {name}"
+    },
+    "Tool": {
+      "Pc": "Set traps",
+      "Gm": "Traps (GM)",
+      "Peek": "Peek at player traps"
+    },
+    "Pc": {
+      "Title": "Set traps",
+      "Open": "Trap-setting is open — set your traps now",
+      "Closed": "You can set traps once the GM opens trap-setting",
+      "Secret": "Traps set here don't show on the GM's screen",
+      "Kit": "Traps in the party's packs",
+      "NoKit": "No snares, traps, poisons or caltrops.",
+      "KitHint": {
+        "best": "DC: the higher of item DC and level DC{bonus}.",
+        "level": "DC: level DC{bonus}.",
+        "item": "DC: the item's own (none: level DC{bonus})."
+      },
+      "Place": "Set",
+      "Placed": "Traps set ({n})",
+      "NonePlaced": "None yet. Click 'Set' on the left, then a square on the map.",
+      "Pickup": "Pick up",
+      "PickupHint": "Take the trap back into the party's packs",
+      "Done": "All set",
+      "DoneLine": "{name}: the players have set {n} trap(s). (Their locations are secret.)"
+    },
+    "Gm": {
+      "Title": "Traps — GM",
+      "PhaseOpen": "Player trap-setting: open (they're setting traps in secret)",
+      "PhaseClosed": "Player trap-setting: closed",
+      "Open": "Open trap-setting",
+      "Close": "Close trap-setting",
+      "PcCount": "{n} player trap(s) armed · {sprung} sprung",
+      "Peek": "Peek",
+      "PeekHint": "Show the players' traps on your screen only, for {s} seconds.",
+      "PeekLine": "The GM peeked at the trap locations.",
+      "ClearPcHint": "Clear every player trap (without looking at them)",
+      "ClearTitle": "Clear traps",
+      "ClearPcAsk": "Clear every player trap on this scene? (They don't return to the packs.)",
+      "ClearGmAsk": "Clear every GM trap on this scene?",
+      "Make": "Make a GM trap",
+      "Drop": "Drop an item or a hazard here, or enter a name and a DC.",
+      "Name": "Name",
+      "NameHint": "e.g. Floor spikes",
+      "Level": "Level",
+      "Desc": "Description (shown when sprung; @Check buttons work)",
+      "DescHint": "e.g. The floor gives way onto spikes. @Check[reflex|dc:20|basic]; on a failure, 2d8 piercing.",
+      "Place": "Place on a square",
+      "NeedName": "Give it a name.",
+      "List": "GM traps ({n})",
+      "None": "None.",
+      "ClearGm": "Clear every GM trap",
+      "CloseAskTitle": "Trap-setting",
+      "CloseAsk": "The players' trap-setting is still <b>open</b>. Close it along with this window?",
+      "CloseAskYes": "Close trap-setting",
+      "CloseAskKeep": "Keep it open, just close the window",
+      "Reset": "Clear the form"
+    },
+    "Place": {
+      "Hint": "Click a square to place the trap (right-click / Esc: cancel)",
+      "NoGrid": "Traps need a scene with a grid.",
+      "Taken": "There is a trap on that square already.",
+      "Done": "{name} — set at {cell}."
+    },
+    "Phase": {
+      "Open": "The GM opened trap-setting — set your traps in secret.",
+      "Closed": "Trap-setting time is over.",
+      "GmOpen": "Player trap-setting is open. Their traps don't show on your screen.",
+      "GmClosed": "Player trap-setting is closed."
+    },
+    "Pop": {
+      "Title": "Trap sprung — {name}",
+      "Base": "base {n}",
+      "Stepped": "{name} stepped on it",
+      "SetBy": "set by {name}",
+      "NoDesc": "No description",
+      "Public": "Post to chat",
+      "GmOnly": "GM only",
+      "Select": "Select that token",
+      "Rearm": "Re-arm",
+      "RearmHint": "Undo — arm the trap again as if nothing happened",
+      "Clear": "Remove"
+    },
+    "Card": {
+      "Sprung": "Click! {name} stepped on a trap"
+    },
+    "Settings": {
+      "DcMode": "Trap & poison DC",
+      "DcModeHint": "The level DC uses the level of whoever sets or carries it.",
+      "DcBest": "The higher of item DC and level DC",
+      "DcLevel": "Always the level DC",
+      "DcItem": "The item's own DC",
+      "DcBonus": "Level DC bonus",
+      "DcBonusHint": "Added to the level DC.",
+      "Phase": "Only during trap-setting time",
+      "PhaseHint": "On: players can set traps only while the GM has trap-setting open.",
+      "PcHits": "Who sets off player traps",
+      "PcHitsHint": "Players' side: player-owned, party members, PF2e party alliance, friendly.",
+      "Enemies": "Anyone not on the players' side",
+      "All": "Anyone",
+      "GmHits": "Who sets off GM traps",
+      "GmHitsHint": "Players' side: player-owned, party members, PF2e party alliance, friendly.",
+      "Pcs": "The players' side",
+      "PeekSeconds": "Peek time (seconds)",
+      "PeekSecondsHint": "How long player traps show on your screen.",
+      "PeekNotice": "Announce peeks in chat",
+      "PeekNoticeHint": "On: posts a chat line when the GM peeks at the players' traps.",
+      "Markers": "Trap markers",
+      "MarkersHint": "(Players) Show your party's traps on the map.",
+      "PlayerTool": "Show the button to players",
+      "PlayerToolHint": "Always show the Set traps button. Off (default): only during trap-setting.",
+      "PoisonTune": "Tune the PCs' poisons to their level",
+      "PoisonTuneHint": "Poisons in PC packs use the trap DC rule (damage unchanged).",
+      "PoisonHalf": "Half stage 1 damage on a successful save",
+      "PoisonHalfHint": "Adds that line to the poison's description.",
+      "PoisonCoat": "Coated weapons poison on a hit",
+      "PoisonCoatHint": "Injury poisons go on a chosen weapon; its next hit delivers them.",
+      "Window": "Trap settings",
+      "Menu": "Trap settings",
+      "MenuLabel": "Open settings",
+      "MenuHint": "All of this module's settings in one window.",
+      "Nothing": "No settings to change.",
+      "ClientTag": "This computer",
+      "Section": {
+        "dc": "DC",
+        "place": "Players setting traps",
+        "spring": "Springing & peeking",
+        "poison": "Poisons"
+      }
+    },
+    "Passed": "{name} crossed “{trap}”; it didn't go off (GM traps catch: {who}).",
+    "Poison": {
+      "HalfTitle": "Successful saving throw (house rule):",
+      "HalfText": "takes half the stage 1 damage."
+    },
+    "Coat": {
+      "Title": "Apply poison",
+      "Pick": "{poison}: which weapon?",
+      "Apply": "Apply",
+      "Plain": "Use without a weapon",
+      "Applied": "Poison applied to {weapon}",
+      "Rule": "If this weapon's next Strike before the end of your next turn hits, the poison takes effect. A critical failure wastes it.",
+      "Hit": "The poison takes effect → {target}",
+      "Wasted": "{weapon}: {poison} wasted on a critical failure.",
+      "Dried": "{weapon}: {poison} dried at the end of the next turn.",
+      "NoTarget": "{poison}: target a creature before the Strike. The poison is still on the weapon."
+    }
+  }
+}

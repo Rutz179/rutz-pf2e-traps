@@ -1,0 +1,8 @@
+.private/
+
+# Rutz Studio
+dist/
+node_modules/
+tools/local.config.json
+*.wiki/
+/*.zip
