@@ -1,6 +1,6 @@
 # Rutz's Traps
 
-[Patreon](https://www.patreon.com/Rutz179) · [디스코드](https://discord.gg/bB7Ca666Bv) · [위키](https://github.com/Rutz179/rutz-pf2e-traps/wiki/한국어-안내) · [English](README.md)
+[디스코드](https://discord.gg/bB7Ca666Bv) · [위키](https://github.com/Rutz179/rutz-pf2e-traps/wiki/한국어-안내) · [English](README.md)
 
 플레이어가 GM 몰래 함정을 깔고, 무언가 밟으면 그제야 GM이 알게 됩니다. Foundry VTT용 — PF2e·D&D 5e 규칙 내장, 다른 시스템은 일반 DC로 동작합니다.
 
@@ -25,7 +25,7 @@ https://github.com/Rutz179/rutz-pf2e-traps/releases/latest/download/module.json
 Foundry VTT v13–v14 · PF2e · D&D 5e · 모든 시스템 · 한국어 / English (Foundry 언어 설정을 따름)
 
 ## 빠른 시작
-1. GM: 토큰 도구의 **함정 (GM)** → **설치 시간 열기**.
+1. GM: 왼쪽 도구 막대 **러츠 툴킷** 그룹의 **함정 (GM)** → **설치 시간 열기**.
 2. 플레이어: **함정 설치** 창이 열립니다 — 함정 옆 **설치** → 지도 칸 클릭. **다 깔았어요**를 누르면 GM에게 몇 개인지만(위치는 빼고) 알립니다.
 3. GM: **설치 시간 닫기** 하고 진행합니다. 크리처가 함정 칸에 들어서면 GM 화면에 함정 창이 뜹니다.
 

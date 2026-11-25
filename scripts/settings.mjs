@@ -13,6 +13,10 @@ export const LAYOUT = [
   ["poison", ["poisonTune", "poisonHalf", "poisonCoat"]]
 ];
 
+/** A registered name, hint or choice label as text: settings are registered at init, before Foundry has loaded the translations, so what is stored there is the lang key. */
+const loc = v => (typeof v === "string" && v ? game.i18n.localize(v) : v);
+const locChoices = c => (c ? Object.fromEntries(Object.entries(c).map(([k, v]) => [k, loc(v)])) : null);
+
 /** Settings with no row (none: each one is something the GM chooses). */
 export const INTERNAL = [];
 
@@ -39,8 +43,9 @@ export function settingsView({ all = game.settings.settings, get = k => game.set
       let value;
       try { value = get(key); } catch (_) { value = cfg.default; }
       // the same hint as the row above (pcHits / gmHits) is shown once
-      const hint = cfg.hint && cfg.hint !== rows.at(-1)?.fullHint ? cfg.hint : "";
-      rows.push({ key, name: cfg.name ?? key, hint, fullHint: cfg.hint ?? "", kind: kindOf(cfg), choices: cfg.choices ?? null, range: cfg.range ?? null, value, client: cfg.scope === "client" });
+      const full = loc(cfg.hint ?? "");
+      const hint = full && full !== rows.at(-1)?.fullHint ? full : "";
+      rows.push({ key, name: loc(cfg.name ?? key), hint, fullHint: full, kind: kindOf(cfg), choices: locChoices(cfg.choices), range: cfg.range ?? null, value, client: cfg.scope === "client" });
     }
     if (rows.length) out.push({ id, rows });
   }

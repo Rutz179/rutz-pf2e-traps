@@ -1,6 +1,6 @@
 # Rutz's Traps
 
-[Patreon](https://www.patreon.com/Rutz179) · [Discord](https://discord.gg/bB7Ca666Bv) · [Wiki](https://github.com/Rutz179/rutz-pf2e-traps/wiki) · [한국어](README.ko.md)
+[Discord](https://discord.gg/bB7Ca666Bv) · [Wiki](https://github.com/Rutz179/rutz-pf2e-traps/wiki) · [한국어](README.ko.md)
 
 Players set traps the GM can't see; the GM finds out when something steps on one. For Foundry VTT — PF2e and D&D 5e rules built in, any other system with generic DCs.
 
@@ -25,7 +25,7 @@ https://github.com/Rutz179/rutz-pf2e-traps/releases/latest/download/module.json
 Foundry VTT v13–v14 · PF2e · D&D 5e · any system · English / 한국어 (follows Foundry's language)
 
 ## Quick start
-1. GM: **Traps (GM)** in the token controls → **Open trap-setting**.
+1. GM: **Traps (GM)** in the **Rutz toolkit** group of the left toolbar → **Open trap-setting**.
 2. Players: the **Set traps** window opens — **Set** next to a trap, then click a square. **All set** tells the GM how many (not where).
 3. GM: **Close trap-setting** and play. When a creature walks onto a trap, its window pops up on the GM's screen.
 

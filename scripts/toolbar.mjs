@@ -1,13 +1,11 @@
-/*
- * The Rutz modules' shared toolbar group (left toolbar: "러츠 툴킷"): every Rutz module adds its buttons here, so the token column keeps Foundry's own tools.
- * Whichever module runs first makes the group; the same file is in every Rutz module, so any works alone.
- */
+/* The Rutz modules' toolbar group ("러츠 툴킷"): the same file is in every Rutz module (byte-identical); whichever runs first makes the group (the HUD, when on, makes it with its own buttons) and the others add theirs. */
+import { settingsHubTool } from "./rutz-settings-hub.mjs";
 
 const GROUP = "rutzToolkit";
-// The group's resting tool: a plain tool, so opening the group never fires a button; same name as the HUD's, so the group has one whoever made it.
+// The group's resting tool: a plain tool, so opening the group never fires a button.
+// Same name as the HUD's, so the group has one whoever made it.
 const HOME = "pkhHome";
 
-/** The group's resting tool: picking it uses no tool (it is not a second toolkit). */
 function homeTitle() {
   const key = "PKH.Toolkit.Home";
   if (game.i18n.has?.(key)) return game.i18n.localize(key);
@@ -20,18 +18,25 @@ function groupTitle() {
   return game.i18n.lang === "ko" ? "러츠 툴킷" : "Rutz toolkit";
 }
 
-/** A scene-control button: v13+ calls onChange (giving onClick too ran it twice). */
+/** A scene-control button: v13+ calls onChange. */
 export function toolButton(name, title, icon, order, fn, visible = true) {
   const run = (game.release?.generation ?? 13) >= 13 ? { onChange: () => fn() } : { onClick: () => fn() };
   return { name, title, icon, order, button: true, visible: !!visible, ...run };
 }
 
-/** Put these buttons in the Rutz group (made here when no other Rutz module has made it yet). */
-export function addRutzTools(controls, tools) {
+/**
+ * Put these buttons in the Rutz group (made here when no other Rutz module has made it yet), and with them the one
+ * button for the settings windows of every Rutz module that is on. A module with no button of its own passes [].
+ */
+export function addRutzTools(controls, tools = []) {
   tools = tools.filter(Boolean);
-  if (!tools.length) return;
-  if (Array.isArray(controls)) {          // v12: no shared group there, so the token controls
-    controls.find(c => c.name === "token")?.tools.push(...tools.filter(tl => tl.visible !== false));
+  const hub = settingsHubTool();
+  if (!tools.length && !hub) return;
+  if (Array.isArray(controls)) {          // v12: no shared group, so the token controls
+    const token = controls.find(c => c.name === "token");
+    if (!token) return;
+    token.tools.push(...tools.filter(tl => tl.visible !== false));
+    if (hub && !token.tools.some(tl => tl.name === hub.name)) token.tools.push(hub);
     return;
   }
   if (!controls[GROUP]) {
@@ -45,6 +50,7 @@ export function addRutzTools(controls, tools) {
   const group = controls[GROUP];
   group.tools ??= {};
   for (const tool of tools) group.tools[tool.name] = tool;
+  if (hub) group.tools[hub.name] ??= hub;
 }
 
 /** Draw the toolbar again: a button was shown or hidden. */
